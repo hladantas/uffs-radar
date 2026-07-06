@@ -1,6 +1,31 @@
 {
-    "editais": [],
-    "bolsas": [],
-    "projetos": [],
-    "noticias": []
+    "editais": [
+        {
+            "titulo": "Edital de Iniciação Científica 2024",
+            "link": "https://www.uffs.edu.br",
+            "data": "2024-03-10"
+        }
+    ],
+    "bolsas": [
+        {
+            "titulo": "Bolsa PIBIC 2024",
+            "link": "https://www.uffs.edu.br",
+            "data": "2024-03-05"
+        }
+    ],
+    "projetos": [
+        {
+            "titulo": "Projeto de Pesquisa em IA",
+            "coordenador": "Prof. João Silva",
+            "link": "https://www.uffs.edu.br",
+            "data": "2024-02-20"
+        }
+    ],
+    "noticias": [
+        {
+            "titulo": "UFFS publica novo edital de pesquisa",
+            "link": "https://www.uffs.edu.br",
+            "data": "2024-03-12"
+        }
+    ]
 }

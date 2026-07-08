@@ -21,31 +21,8 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Instalar dependências do sistema
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            libnss3 \
-            libatk1.0-0 \
-            libatk-bridge2.0-0 \
-            libcups2 \
-            libdrm2 \
-            libxkbcommon0 \
-            libxcomposite1 \
-            libxdamage1 \
-            libxfixes3 \
-            libxrandr2 \
-            libgbm1 \
-            libpango-1.0-0 \
-            libasound2 \
-            libxshmfence1 \
-            libglu1-mesa \
-            libgtk-3-0
-
-      - name: Instalar Playwright (Python)
-        run: |
-          pip install playwright
-          playwright install chromium
+      - name: Instalar dependências
+        run: pip install beautifulsoup4 requests
 
       - name: Rodar script
         run: python scripts/coletar.py

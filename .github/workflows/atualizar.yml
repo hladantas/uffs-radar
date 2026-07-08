@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 6 * * *"   # todo dia às 6h da manhã
   workflow_dispatch:
 
 jobs:
@@ -23,6 +23,11 @@ jobs:
 
       - name: Instalar dependências
         run: pip install beautifulsoup4 requests
+
+      - name: Instalar Playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps
 
       - name: Rodar script
         run: python scripts/coletar.py

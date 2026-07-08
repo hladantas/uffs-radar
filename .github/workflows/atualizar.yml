@@ -1,0 +1,33 @@
+name: Atualizar dados da UFFS
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # todo dia às 6h da manhã
+  workflow_dispatch:
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Instalar dependências
+        run: pip install beautifulsoup4 requests
+
+      - name: Rodar script
+        run: python scripts/coletar.py
+
+      - name: Commit e push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add dados/dados.json
+          git commit -m "Atualização automática"
+          git push

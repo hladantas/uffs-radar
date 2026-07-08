@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # todo dia às 6h da manhã
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 jobs:
@@ -21,13 +21,29 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Instalar dependências
-        run: pip install beautifulsoup4 requests
+      - name: Instalar dependências do sistema
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libcups2 \
+            libdrm2 \
+            libxkbcommon0 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxfixes3 \
+            libxrandr2 \
+            libgbm1 \
+            libpango-1.0-0 \
+            libasound2
+
+      - name: Instalar dependências Python
+        run: pip install beautifulsoup4 requests playwright
 
       - name: Instalar Playwright
-        run: |
-          pip install playwright
-          playwright install --with-deps
+        run: playwright install --with-deps
 
       - name: Rodar script
         run: python scripts/coletar.py

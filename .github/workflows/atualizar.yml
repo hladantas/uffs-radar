@@ -24,7 +24,6 @@ jobs:
       - name: Instalar dependências do sistema
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget gnupg
           sudo apt-get install -y \
             libnss3 \
             libatk1.0-0 \
@@ -38,15 +37,15 @@ jobs:
             libxrandr2 \
             libgbm1 \
             libpango-1.0-0 \
-            libasound2
+            libasound2 \
+            libxshmfence1 \
+            libglu1-mesa \
+            libgtk-3-0
 
       - name: Instalar Playwright (Python)
-        run: pip install playwright
-
-      - name: Instalar navegador Playwright (APT)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y playwright
+          pip install playwright
+          playwright install chromium
 
       - name: Rodar script
         run: python scripts/coletar.py

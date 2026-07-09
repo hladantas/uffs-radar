@@ -1,2 +1,3 @@
-Flask
-playwright
+flask
+requests
+beautifulsoup4

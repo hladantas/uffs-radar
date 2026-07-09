@@ -3,7 +3,6 @@ import requests
 
 app = Flask(__name__)
 
-# URLs reais da UFFS
 URL_NOTICIAS = "https://www.uffs.edu.br/campi/erechim/noticias"
 URL_EDITAIS = "https://boletim.uffs.edu.br/publico/erechim/editais"
 URL_BOLETIM = "https://boletim.uffs.edu.br/publico/erechim/boletins"
@@ -20,23 +19,19 @@ def raiz():
 
 @app.route("/noticias")
 def noticias():
-    html = pegar_html(URL_NOTICIAS)
-    return jsonify({"html": html})
+    return jsonify({"html": pegar_html(URL_NOTICIAS)})
 
 @app.route("/editais")
 def editais():
-    html = pegar_html(URL_EDITAIS)
-    return jsonify({"html": html})
+    return jsonify({"html": pegar_html(URL_EDITAIS)})
 
 @app.route("/boletim")
 def boletim():
-    html = pegar_html(URL_BOLETIM)
-    return jsonify({"html": html})
+    return jsonify({"html": pegar_html(URL_BOLETIM)})
 
 @app.route("/bolsas")
 def bolsas():
-    html = pegar_html(URL_BOLSAS)
-    return jsonify({"html": html})
+    return jsonify({"html": pegar_html(URL_BOLSAS)})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)

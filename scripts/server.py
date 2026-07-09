@@ -3,10 +3,10 @@ import requests
 
 app = Flask(__name__)
 
-URL_NOTICIAS = "https://www.uffs.edu.br/campi/erechim/noticias"
-URL_EDITAIS = "https://boletim.uffs.edu.br/publico/erechim/editais"
-URL_BOLETIM = "https://boletim.uffs.edu.br/publico/erechim/boletins"
-URL_BOLSAS = "https://www.uffs.edu.br/campi/erechim/projetos"
+URL_NOTICIAS = "https://www.uffs.edu.br/uffs/acesso-rapido/noticias?categoria=Erechim"
+URL_EDITAIS = "https://boletim.uffs.edu.br/atos-normativos/edital/cer"
+URL_BOLETIM = "https://boletim.uffs.edu.br/atos-normativos"
+URL_BOLSAS = "https://www.uffs.edu.br/uffs/pesquisa/editais-1"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"

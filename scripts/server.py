@@ -1,41 +1,42 @@
 from flask import Flask, jsonify
-from playwright.sync_api import sync_playwright
+import requests
 
 app = Flask(__name__)
 
-def fetch_html(url):
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        page.goto(url, timeout=60000)
-        page.wait_for_load_state("networkidle")
-        html = page.content()
-        browser.close()
-        return html
+# URLs reais da UFFS
+URL_NOTICIAS = "https://www.uffs.edu.br/campi/erechim/noticias"
+URL_EDITAIS = "https://boletim.uffs.edu.br/publico/erechim/editais"
+URL_BOLETIM = "https://boletim.uffs.edu.br/publico/erechim/boletins"
+URL_BOLSAS = "https://www.uffs.edu.br/campi/erechim/projetos"
+
+def pegar_html(url):
+    resposta = requests.get(url)
+    resposta.raise_for_status()
+    return resposta.text
+
+@app.route("/")
+def raiz():
+    return jsonify({"status": "ok", "mensagem": "Proxy UFFS ativo"})
 
 @app.route("/noticias")
 def noticias():
-    html = fetch_html("https://www.uffs.edu.br/uffs/acesso-rapido/noticias")
+    html = pegar_html(URL_NOTICIAS)
     return jsonify({"html": html})
 
 @app.route("/editais")
 def editais():
-    html = fetch_html("https://boletim.uffs.edu.br/atos-normativos/edital/cer")
+    html = pegar_html(URL_EDITAIS)
     return jsonify({"html": html})
 
 @app.route("/boletim")
 def boletim():
-    html = fetch_html("https://boletim.uffs.edu.br/atos-normativos")
+    html = pegar_html(URL_BOLETIM)
     return jsonify({"html": html})
 
 @app.route("/bolsas")
 def bolsas():
-    html = fetch_html("https://www.uffs.edu.br/uffs/pesquisa/editais-1")
+    html = pegar_html(URL_BOLSAS)
     return jsonify({"html": html})
 
-@app.route("/")
-def home():
-    return "Servidor proxy UFFS funcionando!"
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=10000)

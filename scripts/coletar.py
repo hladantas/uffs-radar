@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import os
 
-BASE = "https://SEU-PROXY.onrender.com"
+BASE = "https://SEU-PROXY.onrender.com"  # coloque o endereço correto aqui
 
 def pegar_html(endpoint):
     dados = requests.get(f"{BASE}/{endpoint}").json()
@@ -64,6 +65,9 @@ def salvar():
         "boletim": coletar_boletim(),
         "bolsas": coletar_bolsas()
     }
+
+    os.makedirs("dados", exist_ok=True)
+
     with open("dados/dados.json", "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=4)
 

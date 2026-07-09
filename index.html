@@ -2,44 +2,49 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Monitor UFFS Erechim</title>
+  <title>Radar UFFS Erechim</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header class="topo">
     <div class="topo-conteudo">
       <img src="logo-uffs.png" alt="UFFS" class="logo">
       <div class="titulo">
-        <h1>Monitor UFFS Erechim</h1>
-        <p>Notícias, editais, boletins e bolsas em um só lugar.</p>
+        <h1>Radar UFFS Erechim</h1>
+        <p>Acompanhe notícias, editais, boletins e bolsas.</p>
       </div>
     </div>
   </header>
 
   <main class="conteudo">
+
     <section class="card">
       <h2>Notícias</h2>
-      <!-- lista de notícias -->
+      <ul id="noticias"></ul>
     </section>
 
     <section class="card">
       <h2>Editais</h2>
-      <!-- lista de editais -->
+      <ul id="editais"></ul>
     </section>
 
     <section class="card">
-      <h2>Boletim</h2>
-      <!-- lista de boletins -->
+      <h2>Boletins</h2>
+      <ul id="boletim"></ul>
     </section>
 
     <section class="card">
       <h2>Bolsas e Projetos</h2>
-      <!-- lista de bolsas -->
+      <ul id="bolsas"></ul>
     </section>
+
   </main>
 
   <footer class="rodape">
     <p>Atualizado automaticamente com dados públicos da UFFS.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
